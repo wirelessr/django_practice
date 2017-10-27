@@ -1,4 +1,4 @@
-This repo is the practice with django book.
+# This repo is the practice with django book.
 
 1. python3 -m virtualenv env_mysite  
 2. source env_mysite/bin/activate  
@@ -9,3 +9,25 @@ This repo is the practice with django book.
 7. heroku run python mysite/manage.py migrate
 
 Now django works on heroku
+
+# Studying Notes:
+If you want call django packages from external sites, it must setup environments first.
+
+```
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'my_app.settings')
+import django
+django.setup()
+```
+
+Template can leverage json
+
+```
+inner = {'val':99}
+items = {'key':inner}
+t = Template('Item 99 is {{ items.key.val }}.')
+c = Context({'items':items})
+t.render(c)
+```
+
+> 'Item 99 is 99.'
