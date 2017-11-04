@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from mysite.views import hello, current_datetime, hours_ahead, shortcut_time
+from mysite.views import contact
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,4 +27,5 @@ urlpatterns = [
     url(r'^stime/$', shortcut_time),
     url(r'^time/plus/(\d{1,2})/$', hours_ahead),
     url(r'^', include('books.urls')),
+    url(r'^contact/$', contact),
 ]
