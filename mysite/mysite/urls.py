@@ -15,17 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
 
-from mysite.views import hello, current_datetime, hours_ahead, shortcut_time
-from mysite.views import contact
+from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/$', hello),
-    url(r'^$', hello), # homepage
-    url(r'^time/$', current_datetime),
-    url(r'^stime/$', shortcut_time),
-    url(r'^time/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^hello/$', views.hello),
+    url(r'^$', views.hello), # homepage
+    url(r'^time/$', views.current_datetime),
+    url(r'^stime/$', views.shortcut_time),
+    url(r'^time/plus/(\d{1,2})/$', views.hours_ahead),
     url(r'^', include('books.urls')),
-    url(r'^contact/$', contact),
+    url(r'^contact/$', views.contact),
 ]
+
+if settings.DEBUG:
+    urlpatterns += [url(r'^debuginfo/$', views.hello),]
