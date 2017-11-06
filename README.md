@@ -10,6 +10,9 @@
 
 Now django works on heroku
 
+# NOTE
+The built-in login/logout cannot work for me. I will take some time to study that.
+
 # Studying Notes:
 If you want call django packages from external sites, it must setup environments first.
 

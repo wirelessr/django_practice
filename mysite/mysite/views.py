@@ -2,8 +2,10 @@ import datetime
 
 from django.template.loader import get_template
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.core.mail import send_mail, get_connection
+from django.contrib.auth.decorators import login_required
+from django.contrib import auth
 
 from mysite.forms import ContactForm
 
@@ -50,3 +52,30 @@ def contact(request):
             )
 
     return render(request, 'contact_form.html', {'form': form})
+
+@login_required(login_url='/accounts/login/')
+def user_view(request):
+    return HttpResponse("User is logged in")
+
+def index(request):
+    return render_to_response('index.html',locals())
+
+def login(request):
+
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/index/')
+
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+
+    user = auth.authenticate(username=username, password=password)
+
+    if user is not None and user.is_active:
+        auth.login(request, user)
+        return HttpResponseRedirect('/index/')
+    else:
+        return render_to_response('login.html')
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/index/')

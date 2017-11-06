@@ -28,6 +28,10 @@ urlpatterns = [
     url(r'^time/plus/(\d{1,2})/$', views.hours_ahead),
     url(r'^', include('books.urls')),
     url(r'^contact/$', views.contact),
+    url(r'^user/$', views.user_view),
+    url(r'^accounts/login/$', views.login),
+    url(r'^accounts/logout/$', views.logout),
+    url(r'^index/$', views.index),
 ]
 
 if settings.DEBUG:

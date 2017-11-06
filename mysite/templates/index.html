@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <link rel="stylesheet" href="/style.css" />
+    <title>{% block title %}User test{% endblock %}</title>
+</head>
+
+<body>
+        {% if request.user.is_authenticated %}
+            <p>
+            Hi {{request.user}},<p> You have been logged in.<p>
+                <a href="/accounts/logout/">Logout</a>
+            </p>
+            <a href="/user/">Character List</a>
+        {% else %}
+        <p>You have not logged in<p><a href="/accounts/login/">Login</a></p>
+        {% endif %}
+</body>
+
+</html>

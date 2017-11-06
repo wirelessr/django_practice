@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <link rel="stylesheet" href="/style.css" />
+    <title>{% block title %}User test{% endblock %}</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="username">User Account:</label>
+        <input type="text" name="username" value="" id="username"> <br />
+        <label for="password">User Password:</label>
+        <input type="password" name="password" value="" id="password"> <br />
+        <input type="submit" value="Login" />
+    </form>
+</body>
+
+</html>
