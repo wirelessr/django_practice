@@ -1,3 +1,6 @@
+> I took lots of time to study the chapter 11 of django-book. But it is too rough to describe the built-in login/logout; I can even not write a HTML by reading that chapter. So I quit studying django by django-book.  
+> I found another tutorial to learn more: https://simpleisbetterthancomplex.com/series/2017/09/04/a-complete-beginners-guide-to-django-part-1.html. So I will open a new repo to continue.
+
 # This repo is the practice with django book.
 
 1. python3 -m virtualenv env_mysite  
